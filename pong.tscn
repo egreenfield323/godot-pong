@@ -1,32 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://c616y4qbpev6l"]
+[gd_scene load_steps=7 format=3 uid="uid://c616y4qbpev6l"]
 
+[ext_resource type="Script" path="res://pong.gd" id="1_cvuyq"]
 [ext_resource type="PackedScene" uid="uid://d28omjvylqawd" path="res://paddle.tscn" id="1_s8cp3"]
 [ext_resource type="PackedScene" uid="uid://bh383etyn5p7o" path="res://wall.tscn" id="2_1j646"]
 [ext_resource type="PackedScene" uid="uid://jd8iajltmdk5" path="res://ball.tscn" id="2_m80tk"]
+[ext_resource type="PackedScene" uid="uid://cbb6iibfrs5aj" path="res://brick.tscn" id="2_mtgys"]
+[ext_resource type="FontFile" uid="uid://cccav3hutr1i2" path="res://Premier2019-rPv9.ttf" id="5_wyx2l"]
 
-[node name="Pong" type="Node2D"]
+[node name="Pong" type="Node2D" node_paths=PackedStringArray("txtScore")]
+script = ExtResource("1_cvuyq")
+brick_resource = ExtResource("2_mtgys")
+txtScore = NodePath("paddle/scoreText")
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="wall" parent="Walls" instance=ExtResource("2_1j646")]
+position = Vector2(-2, 0)
+
+[node name="wall2" parent="Walls" instance=ExtResource("2_1j646")]
+position = Vector2(1161, 0)
+
+[node name="wall3" parent="Walls" instance=ExtResource("2_1j646")]
+position = Vector2(-17, 0)
+rotation = -1.5708
+scale = Vector2(26, 1.8)
+
+[node name="wall4" parent="Walls" instance=ExtResource("2_1j646")]
+position = Vector2(-17, 651)
+rotation = -1.5708
+scale = Vector2(26, 1.8)
+
+[node name="Bricks" type="Node" parent="."]
 
 [node name="paddle" parent="." instance=ExtResource("1_s8cp3")]
 position = Vector2(654, 589)
 rotation = -1.5708
 scale = Vector2(0.720001, 0.720001)
 
+[node name="scoreText" type="Label" parent="paddle"]
+offset_left = 25.0
+offset_top = -18.0554
+offset_right = 115.0
+offset_bottom = 105.945
+rotation = 1.5708
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("5_wyx2l")
+theme_override_font_sizes/font_size = 90
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Ball" parent="." instance=ExtResource("2_m80tk")]
-position = Vector2(671, 220)
+position = Vector2(650, 488)
 scale = Vector2(0.559998, 0.559998)
-
-[node name="wall" parent="." instance=ExtResource("2_1j646")]
-position = Vector2(-2, 0)
-
-[node name="wall2" parent="." instance=ExtResource("2_1j646")]
-position = Vector2(1161, 0)
-
-[node name="wall3" parent="." instance=ExtResource("2_1j646")]
-position = Vector2(-17, 0)
-rotation = -1.5708
-scale = Vector2(26, 1.8)
-
-[node name="wall4" parent="." instance=ExtResource("2_1j646")]
-position = Vector2(-17, 651)
-rotation = -1.5708
-scale = Vector2(26, 1.8)
