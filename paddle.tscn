@@ -4,12 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bya28iyn1pi7" path="res://pPaddle.png" id="2_yrn8o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ved46"]
-size = Vector2(102, 222)
+size = Vector2(107, 227)
 
 [node name="paddle" type="CharacterBody2D"]
 script = ExtResource("1_78i86")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -1.5)
 shape = SubResource("RectangleShape2D_ved46")
 
 [node name="paddleSprite" type="Sprite2D" parent="."]
